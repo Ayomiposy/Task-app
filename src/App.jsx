@@ -14,6 +14,12 @@ const App = () => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
+  const handleDelete = (id) => {
+    if (window.confirm("do you want to delete note")) {
+      setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto my-auto p-6">
       <div className="mt-6">
@@ -26,7 +32,7 @@ const App = () => {
 
       {/* Todo App input component */}
       <TodoForm todos={todos} setTodos={setTodos} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} handleDelete={handleDelete} />
     </div>
   );
 };

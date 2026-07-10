@@ -1,4 +1,4 @@
-import { Pencil, Trash2 } from "lucide-react";
+import { Notebook, Pencil, Trash2 } from "lucide-react";
 import {
   Table,
   TableHeader,
@@ -8,7 +8,7 @@ import {
   TableCell,
 } from "./ui/table";
 
-export const TodoList = ({ todos }) => {
+export const TodoList = ({ todos, handleDelete }) => {
   return (
     <div className="w-full mt-6 bg-accent p-4 rounded-md">
       <p>A list of all your tasks</p>
@@ -33,7 +33,7 @@ export const TodoList = ({ todos }) => {
         <TableBody>
           {todos.length > 0 ? (
             todos.map((todo) => (
-              <TableRow key={todo.id}>
+              <TableRow key={todo.id} onClick={() => handleDelete(todo.id)}>
                 <TableCell className="font-medium border-r-2 border-gray-300">
                   {todo.todo}
                 </TableCell>
